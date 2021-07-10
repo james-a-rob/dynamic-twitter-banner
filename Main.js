@@ -41,5 +41,10 @@ app.listen(process.env.PORT || 3000,
 const main = new Main()
 
 setInterval(()=>{
+    console.log()
     main.updateUserBannerImages();
 }, 60000);
+
+process.on('uncaughtException', function(err) {
+    console.log('Caught exception: ' + err);
+  });

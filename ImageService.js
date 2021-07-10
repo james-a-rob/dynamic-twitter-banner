@@ -44,7 +44,7 @@ class ImageCreator{
         ctx.drawImage(image1, (width/2)-(profileImageWidth/2), 290, 120, 120);
     
         const buffer = canvas.toBuffer('image/png')
-        fs.writeFileSync('./image.png', buffer)
+        // fs.writeFileSync('./image.png', buffer)
         return buffer;
     }
 }
