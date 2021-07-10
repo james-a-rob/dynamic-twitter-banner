@@ -24,4 +24,8 @@ class Main{
     }
 }
 
-new Main().updateUserBannerImages();
+const main = new Main()
+
+setInterval(()=>{
+    main.updateUserBannerImages();
+}, 60000);
