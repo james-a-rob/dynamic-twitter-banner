@@ -29,7 +29,7 @@ class Main{
 app.use(express.static("public"))
 
 app.get("/", function (req, res) {
-  res.send("<h1>Working</h1>")
+  res.send("<h1>Working1</h1>")
 })
 
 app.listen(process.env.PORT || 3000, 
