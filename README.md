@@ -3,21 +3,21 @@ Give your latest follow a nice big thanks.
 
 
 ### Example
-![JamesARob1 banner image](https://twitter.com/JamesARob1/header_photo)
+![JamesARob1 banner image](https://pbs.twimg.com/profile_banners/1402918520825028611/1626112697/1500x500)
 
 
-### requirements
+### Requirements
 Node.js 
 
-### install
+### Install
 clone this repo and ```npm install```
 
-### setup
+### Setup
 Create a .env file with the following set 
  - API_KEY
  - API_SECRET
  - ACCESS_TOKEN
  - ACCESS_TOKEN_SECRET
 
- ### usage
+ ### Usage
  To start the script run ```npm run start```
