@@ -1,5 +1,4 @@
 const { createCanvas, loadImage, registerFont } = require('canvas')
-const fs = require('fs');
 const width = 1500;
 const height = 500;
 const profileImageWidth = 120;
@@ -32,8 +31,6 @@ class ImageCreator{
         ctx.font = '25px "Anton Regular"';
         ctx.fillStyle = "#d1eeff";
     
-        // ctx.fillText("follow to make banner update", 1350, 350);
-
         ctx.drawImage(partyImageFlipped, (width/2)-220, 290, 120, 120);
 
         ctx.drawImage(partyImage, (width/2)+100, 290, 120, 120)
@@ -44,7 +41,7 @@ class ImageCreator{
         ctx.drawImage(image1, (width/2)-(profileImageWidth/2), 290, 120, 120);
     
         const buffer = canvas.toBuffer('image/png')
-        // fs.writeFileSync('./image.png', buffer)
+
         return buffer;
     }
 }

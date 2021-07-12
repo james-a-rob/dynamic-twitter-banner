@@ -1,35 +1,32 @@
+const express = require("express");
+require("dotenv").config();
 const ImageService = require('./ImageService');
 const TwitterService = require('./TwitterService');
-const express = require("express")
+const { pluckLargeImgUrl } = require('./utils');
+
 const app = express()
-const {pluckLargeImgUrl} = require('./utils');
-const users = [{name: 'james'}, {name: 'bill'}];
 
 class Main{
     async updateUserBannerImages(){
-        console.log('running');
         const imageService = new ImageService();
         const twitterService = new TwitterService();
-        for (const user of users) {
-            const data = await twitterService.getRecentFollowers();
-            const recentFollowers = data.users;
+        const data = await twitterService.getRecentFollowers();
+        const recentFollowers = data.users;
 
-            const img1 = pluckLargeImgUrl(recentFollowers[0]);
-            console.log(img1);
-            const buffer = await imageService.createImage(
-                {username:recentFollowers[0].screen_name, img:img1}
-            );
-            console.log(buffer);
-            await twitterService.uploadBannerImage(buffer.toString('base64'))
+        const img1 = pluckLargeImgUrl(recentFollowers[0]);
 
-        }
+        const buffer = await imageService.createImage(
+            {username:recentFollowers[0].screen_name, img:img1}
+        );
+        
+        await twitterService.uploadBannerImage(buffer.toString('base64'));
+
+
     }
 }
 
-app.use(express.static("public"))
-
 app.get("/", function (req, res) {
-  res.send("<h1>Working1</h1>")
+  res.send("<h1>Status</h1>");
 })
 
 app.listen(process.env.PORT || 3000, 
@@ -38,7 +35,7 @@ app.listen(process.env.PORT || 3000,
 const main = new Main()
 
 setInterval(()=>{
-    console.log()
+    console.log('update banner');
     main.updateUserBannerImages();
 }, 60000);
 

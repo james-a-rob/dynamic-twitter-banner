@@ -63,18 +63,15 @@ const mockData = {
   }
 
 const twitterClient = new TwitterClient({
-    apiKey: 'hUwB5bMoHqv4RzP9CrAWbcsyo',
-    apiSecret: '9iW8FSH4R5u5TUDWzGXRL5xbrvzFtfuAyXLsQtvetl9Z5dBlEp',
-    accessToken: '1402918520825028611-t3W9MHTjS9djv73jGdGMizRoFA83eU',
-    accessTokenSecret: 'MUiduhQQrLUfchiKeQQs5otN8RCx8yoyQJ5p9Bka2YXar',
+    apiKey: process.env.API_KEY,
+    apiSecret: process.env.API_SECRET,
+    accessToken: process.env.ACCESS_TOKEN,
+    accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
 });
 
 class TwitterService{
-    async getRecentFollowers(){
-
-          
+    async getRecentFollowers(){     
           const data = await twitterClient.accountsAndUsers.followersList({count:1}).catch((e)=>console.log(e));
-        //   console.log(mockData);
           return data;
     }
     async uploadBannerImage(banner){
